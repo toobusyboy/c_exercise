@@ -8,7 +8,7 @@ int main(int argc, const char *argv[])
 {
 	void *a[2] = {func,func1};
 
-	void (*(*a_ptr)[2])(void) = &a;
+	void (*(*a_ptr)[2])(void) = (void (*(*)[2])(void))&a;
 
 	for(int i = 0; i < sizeof(a)/sizeof(a[0]);i++)
 	{
