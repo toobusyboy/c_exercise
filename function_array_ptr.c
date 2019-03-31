@@ -25,18 +25,19 @@ int main(int argc, const char *argv[])
 		((int (*)(const char *))*(func_ptr+i))(str);
 	}
 
-	int (*func_arrary[2])(const char *) = {func1,func2};
-	for(int i = 0; i < 2 ;i ++)
-	{
-		sprintf(str,"%d",i);
-		func_arrary[i](str);
-	}
 
 	int (*(*func_arrary_ptr)[2])(const char *) = (int (*((*)[2]))(const char *))&array;
 	for(int i = 0 ; i < 2 ;i ++)
 	{
 		sprintf(str,"%d",i);
 		((int (*)(const char *))*(*func_arrary_ptr+i))(str);
+	}
+
+	int (*func_arrary[2])(const char *) = {func1,func2};
+	for(int i = 0; i < 2 ;i ++)
+	{
+		sprintf(str,"%d",i);
+		func_arrary[i](str);
 	}
 
 	return 0;
